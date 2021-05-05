@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  app:
+	image: ricardopedias/docker-project:ruby30
+        container_name: ruby30-app
+    volumes:
+      - .:/application
+    ports:
+      - "9999:80"
+  
