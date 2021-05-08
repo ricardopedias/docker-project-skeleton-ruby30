@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$RUNNING_DOCKER" == "1" ]; then
+    echo "Dentro do docker, use o bundle diretamente (sem ./)."
+    exit 1
+fi
+
+docker compose up
+
+if [ "$1" == "bash" ]; then
+    docker exec -it -u 1000:1000 ruby30-app bash 
+    exit 1
+fi
+
+docker exec -it -u 1000:1000 ruby30-app bundle "$@" 
